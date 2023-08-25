@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Jobs</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'assets/css/getjobs.css'%}">
+   
+</head>
+
+<body class="white-theme">
+
+  <div class="kovai">
+    <center><b><h1>{{categ}}</h1></b></center>
+  </div>
+  <div class="topnav">
+    <center><h3><b>POSTS</b></h3></center>
+  </div>
+  <br>
+
+  
+  <div class="profiles-container">
+   {% for post in posts %}
+   {% with "/jobdetails/"|add:post.strId as redirect %}
+    <div class="container">
+      <h2>{{post.username}}</h2>
+      <center><img src="{% static 'assets/img/profile.jpeg' %}" width="140" height="130"></center>
+      <h3>NAME: {{post.name}}</h3>
+      <h3>JOB ID: {{post.id}}</h3>
+      <h3>MEN WAGE: ₹{{post.menWage}}</h3>
+      <h3>WOMEN WAGE: ₹{{post.womenWage}}</h3>
+      <h3>PLACE: {{post.town}}</h3>
+      <div class="book-now" style="text-align: right;">
+        <button  style="font-size: 12px;" id="openPopup1" class="popup-button">Expand</button>
+
+        <div class="popup-overlay" id="popupOverlay1">
+          <div class="popup-content">
+            <h2 class="popup-heading">Are you sure?</h2>
+            <p>Click the show details button to view the full Job details</p>
+            <a href="{{redirect}}"><button id="jobRequestButton" class="popup-button">Show Details</button></a>
+            <a href=""><button id="jobRequestButton" class="popup-button">Close</button></a>
+            <p class="popup-disclaimer">0.2 Gem will be taken if you proceed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+<br>
+<br>
+   {% endwith %}
+   {% endfor %}
+  
+
+  </div>
+  <script>
+    const openPopupButton1 = document.getElementById('openPopup1');
+    const openPopupButton2 = document.getElementById('openPopup2');
+    const openPopupButton3 = document.getElementById('openPopup3');
+    const popupOverlay1 = document.getElementById('popupOverlay1');
+    const popupOverlay2 = document.getElementById('popupOverlay2');
+    const popupOverlay3 = document.getElementById('popupOverlay3');
+    const jobRequestButton = document.getElementById('jobRequestButton');
+  
+    openPopupButton1.addEventListener('click', () => {
+      popupOverlay1.style.display = 'block';
+    });
+  
+    openPopupButton2.addEventListener('click', () => {
+      popupOverlay2.style.display = 'block';
+    });
+  
+    openPopupButton3.addEventListener('click', () => {
+      popupOverlay3.style.display = 'block';
+    });
+  
+    jobRequestButton.addEventListener('click', () => {
+      alert('Job Requested!');
+      popupOverlay1.style.display = 'none';
+      popupOverlay2.style.display = 'none';
+      popupOverlay3.style.display = 'none';
+    });
+  </script>
+  
+</body>
+
+</html>

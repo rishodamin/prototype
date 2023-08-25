@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Popup Example</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Your global styles here */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+    }
+    .popup-content {
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 400px;
+    }
+    .popup-heading {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .popup-button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .popup-disclaimer {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button id="openPopup" class="popup-button">Open Popup</button>
+
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-content">
+      <h2 class="popup-heading">Detailed Information</h2>
+      <p>This is the detailed information about the job request.</p>
+      <button id="jobRequestButton" class="popup-button">Job Request</button>
+      <p class="popup-disclaimer">1 credit will be taken if the request is declined. Credits will be refunded if declined.</p>
+    </div>
+  </div>
+
+  <script>
+    const openPopupButton = document.getElementById('openPopup');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const jobRequestButton = document.getElementById('jobRequestButton');
+
+    openPopupButton.addEventListener('click', () => {
+      popupOverlay.style.display = 'block';
+    });
+
+    jobRequestButton.addEventListener('click', () => {
+      // Perform job request logic here
+      alert('Job Requested!');
+      popupOverlay.style.display = 'none';
+    });
+  </script>
+
+</body>
+
+</html>

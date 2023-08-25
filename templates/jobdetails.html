@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.header {
+  padding: 2px;
+  font-size: 20px;
+  text-align: center;
+  background:radial-gradient(rgb(182, 231, 255),rgb(228, 246, 255));
+}
+
+.leftcolumn {   
+  float: left;
+  width: 100%;
+}
+
+.card {
+   background: radial-gradient(rgb(182, 231, 255),rgb(228, 246, 255));
+   padding: 20px;
+   margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Job Details</h2>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+        <h3>Name : {{post.name}}</h3>
+        <h3>Job Id : {{post.id}} </h3>
+        <h3>Post : {{post.username}} </h3>
+        <h3>Catogery : {{post.category}} </h3>
+        <h3>Date : {{post.date}} </h3>
+        <h3>Time : {{post.time}} </h3>
+        <h3>Vacancy : {{post.strength}} </h3>
+        <h3>Wage(Men) : {{post.menWage}} </h3>
+        <h3>Wage(Women) : {{post.womenWage}} </h3>
+        <h3>Phone no : {{post.phonenum}} </h3>
+        <h3>Place : {{post.town}} </h3>
+        <h3>Address : {{post.address}}</h3>
+        <h3>Description : {{post.description}}</h3>
+    </div>
+  </div>
+</div>
+</body>
+</html>

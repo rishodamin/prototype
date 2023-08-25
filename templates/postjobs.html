@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        h5{
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    {% with "/postjobs/"|add:categ as redirect %}
+    <form method="post" action={{redirect}}>
+        {% endwith %}
+        {% csrf_token %}
+        <div class="flex h-screen bg-gray-100">
+            <div class="m-auto">
+            <div>
+                <div class="mt-5 rounded-lg bg-white shadow">
+                <h2 class="px-5 py-5 text-center text-lg">Complete the form to post the Job</h2>
+                <div class="flex w-screen flex-col gap-5 px-5 pb-5">
+                    <h2 class="mt-5">Enter the date of work</h2>
+                    <input name="date" placeholder="date of work" type="date" class="w-full transform rounded-lg border-transparent bg-gray-200 px-4 py-2.5 text-base text-black placeholder-gray-600  ring-offset-2  ring-offset-slate-600 transition duration-500 ease-in-out focus:bg-white focus:outline-none focus:ring-1 ring-white" />
+                    <h2 class="mt-5">Enter the time</h2>
+                    <input name="time" placeholder="Time" type="time" class="w-full transform rounded-lg border-transparent bg-gray-200 px-4 py-2.5 text-base text-black placeholder-gray-600  ring-offset-2  ring-offset-slate-600 transition duration-500 ease-in-out focus:bg-white focus:outline-none focus:ring-1 ring-white" />
+                    <h2 class="mt-5">Name</h2>
+                    <input name="name" placeholder="Enter your Name" class="focus:border-blueGray-500 focus:shadow-outline mt-2 w-full transform rounded-lg border-transparent bg-gray-200 px-4 py-2.5 text-base text-black placeholder-gray-600 ring-white ring-offset-2 ring-offset-slate-600 transition duration-500 ease-in-out focus:bg-white focus:outline-none focus:ring-2" />
+                    <h2 class="mt-5">Enter the number of people</h2>
+                    <input name="strength" placeholder="Total people" class="focus:border-blueGray-500 focus:shadow-outline mt-2 w-full transform rounded-lg border-transparent bg-gray-200 px-4 py-2.5 text-base text-black placeholder-gray-600 ring-white ring-offset-2 ring-offset-slate-600 transition duration-500 ease-in-out focus:bg-white focus:outline-none focus:ring-2" />
+        
+                    <h2 class="mt-5">Enter men's wages</h2>
+                    <input name="menWage" placeholder="Men wages" class="focus:border-blueGray-500 focus:shadow-outline w-full transform rounded-lg border-transparent bg-gray-200 px-4 py-2.5 text-base text-black placeholder-gray-600 ring-white ring-offset-2 ring-offset-slate-600 transition duration-500 ease-in-out focus:bg-white focus:outline-none focus:ring-1" />
+                    <h2 class="mt-5">Enter women's wages</h2>
+                    <input name="womenWage" placeholder="Women wages" class="focus:border-blueGray-500 focus:shadow-outline w-full transform rounded-lg border-transparent bg-gray-200 px-4 py-2.5 text-base text-black placeholder-gray-600 ring-white ring-offset-2 ring-offset-slate-600 transition duration-500 ease-in-out focus:bg-white focus:outline-none focus:ring-1" />
+                    <h2 class="mt-5">Enter phone number</h2>
+                    <input name="phonenum" placeholder="Phone number" type="tel" class="focus:border-blueGray-500 focus:shadow-outline w-full transform rounded-lg border-transparent bg-gray-200 px-4 py-2.5 text-base text-black placeholder-gray-600 ring-white ring-offset-2 ring-offset-slate-600 transition duration-500 ease-in-out focus:bg-white focus:outline-none focus:ring-1" />
+                    <h2 class="mt-5">Enter the Town</h2>
+                    <input name="town" placeholder="Work Location" class="focus:border-blueGray-500 focus:shadow-outline mt-2 w-full transform rounded-lg border-transparent bg-gray-200 px-4 py-2.5 text-base text-black placeholder-gray-600 ring-white ring-offset-2 ring-offset-slate-600 transition duration-500 ease-in-out focus:bg-white focus:outline-none focus:ring-1" />
+                    <h2 class="mt-5">Enter the full work location</h2>
+                    <textarea name="address" placeholder="Full Address" class="focus:border-blueGray-500 focus:shadow-outline w-full transform rounded-lg border-transparent bg-gray-200 px-4 py-2.5 text-base text-black placeholder-gray-600 ring-white ring-offset-2 ring-offset-slate-600 transition duration-500 ease-in-out focus:bg-white focus:outline-none focus:ring-1"></textarea>
+                    <h2 class="mt-5">Description(optional)</h2>
+                    <textarea name="description" placeholder="Description" class="focus:border-blueGray-500 focus:shadow-outline w-full transform rounded-lg border-transparent bg-gray-200 px-4 py-2.5 text-base text-black placeholder-gray-600 ring-white ring-offset-2 ring-offset-slate-600 transition duration-500 ease-in-out focus:bg-white focus:outline-none focus:ring-1"></textarea>
+                </div>
+                {% for message in messages %}
+                <h5>{{message}}</h5>
+                {% endfor %}
+                <div class="flex flex-row-reverse p-3 my-5">
+                    <div class="w-full flex-initial pl-3 ">
+                    <button type="submit" class="flex transform items-center rounded-md bg-black px-5 py-2.5 font-medium capitalize tracking-wide text-white transition duration-300 ease-in-out hover:bg-gray-800 focus:bg-gray-900 focus:outline-none active:scale-95">
+                        <span class="">Post</span>
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+      </form>
+</body>
+</html>
